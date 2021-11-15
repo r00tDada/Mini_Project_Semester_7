@@ -53,18 +53,19 @@ def add_company(request):
     return render(request, "placement/add_company.html")
 
 
-# def add_announcement(request):
-#     if request.method == "POST":
-#         title = request.POST['title']
-#         desc = request.POST['desc']
-#         # date_posted = datetime.datetime.now()
-#         # author = ......
-#         print(title, desc)
-#         pt = Post(title=title, content=desc,
-#                   date_posted=timezone.now(), author=User)
-#         pt.save()
-#         print("Post is added")
-#     return render(request, "placement/add_announcement.html")
+def add_announcement(request):
+    if request.method == "POST":
+        title = request.POST['title']
+        desc = request.POST['desc']
+        # date_posted = datetime.datetime.now()
+        # author = ......
+        # print(title, desc, timezone.now(), User)
+        print("*********************************************************************")
+        pt = Post(title=title, content=desc,
+                  date_posted=timezone.now())
+        pt.save()
+        print("Post is added")
+    return render(request, "placement/add_announcement.html")
 
 
 def add_stats(request):
