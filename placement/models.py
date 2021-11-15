@@ -29,14 +29,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     return reverse('post-detail', kwargs={'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.pk})
 
 
 class application(models.Model):
     name = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.CASCADE)
-    applied_to = models.ManyToManyField(company, null=True, blank=True)
+    applied_to = models.ManyToManyField(company,  blank=True)
 
     def __str__(self):
         return f'{self.name.username} Application'
