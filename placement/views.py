@@ -56,9 +56,6 @@ def add_company(request):
     return render(request, "placement/add_company.html")
 
 
-postss = []
-
-
 def add_announcement(request):
     if request.method == "POST":
         form = posted.CreatePost(request.POST)
@@ -69,7 +66,9 @@ def add_announcement(request):
                 timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
             pt.author = request.user
             # print(pt.title, pt.content, pt.date_posted, pt.author)
-            postss.append(pt)
+            ptt = Post(title=pt.title, content=pt.content,
+                       date_posted=pt.date_posted, author=pt.author)
+            ptt.save()
             return render(request, "placement/index.html")
     else:
         form = posted.CreatePost()
@@ -89,7 +88,7 @@ def show_description(request, company_id):
 
 def announcement(request):
     context = {
-        'posts': postss
+        'posts': Post.objects.all()
     }
     return render(request, 'placement/announcement.html', context)
 
