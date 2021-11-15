@@ -6,11 +6,12 @@ import pandas as pd
 import os
 import tf_idf
 
-resume_dir = "Data/Resumes/"
-job_desc_dir = "Data/JobDesc/"
+resume_dir = "/home/r00tdada/Mini_Project_Semester_7/media/Resume/"
+job_desc_dir = "/home/r00tdada/Mini_Project_Semester_7/media/JobDesc/"
 resume_names = os.listdir(resume_dir)
 job_description_names = os.listdir(job_desc_dir)
-
+print(resume_names)
+print(job_description_names)
 document = []
 
 
@@ -45,7 +46,8 @@ Doc = get_cleaned_words(document)
 Database = pd.DataFrame(document, columns=[
                         "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
 
-Database.to_csv("Resume_Data.csv", index=False)
+Database.to_csv(
+    "/home/r00tdada/Mini_Project_Semester_7/Resume_Matcher/Resume_Data.csv", index=False)
 
 # Database.to_json("Resume_Data.json", index=False)
 
@@ -69,4 +71,5 @@ Jd = get_cleaned_words(job_document)
 jd_database = pd.DataFrame(Jd, columns=[
                            "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
 
-jd_database.to_csv("Job_Data.csv", index=False)
+jd_database.to_csv(
+    "/home/r00tdada/Mini_Project_Semester_7/Resume_Matcher/Job_Data.csv", index=False)

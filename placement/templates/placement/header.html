@@ -7,6 +7,7 @@
 {% url 'profile' as profile_url %}
 {% url 'register' as register_url %}
 {% url 'login' as login_url %}
+{% url 'add_resume' as add_resume_url %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,10 +70,7 @@
             height: 100%;
         }
 
-        .center-fit {
-            max-width: 100%;
-            max-height: 100vh;
-            margin: auto;
+        http: //localhost:8501/
         }
 
         .centered {
@@ -91,7 +89,7 @@
             <a class="{% if request.path == '/announcement/' %} active {% endif %}"
                 href="/announcement/">Announcements</a>
             <a class="{% if request.path == '/show_company/' %} active {% endif %}" href="/show_company/">Job
-                Profiles</a>
+                Profiles</a>http://localhost:8501/
             {% if user.is_authenticated %}
             <a href="{{ job_offers_url }}" class="{% if request.path == job_offers_url %} active {% endif%}">Job
                 Offers</a>
@@ -103,6 +101,9 @@
                 class="{% if request.path == add_announcement_url %} active {% endif%}">Add Post
             </a> -->
             <a href="{{ add_stats_url }}" class="{% if request.path == add_stats_url %} active {% endif%}">Stats
+            </a>
+            <a href="{{ add_resume_url }}"
+                class="{% if request.path == add_resume_url %} active {% endif%}">Resume_Screener
             </a>
 
             <!--  -->

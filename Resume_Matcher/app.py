@@ -16,15 +16,18 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-image = Image.open('Images//logo.png')
+image = Image.open(
+    '/home/r00tdada/Mini_Project_Semester_7/Resume_Matcher/Images/logo.png')
 st.image(image, use_column_width=True)
 
 st.title("Resume Matcher")
 
 
 # Reading the CSV files prepared by the fileReader.py
-Resumes = pd.read_csv('Resume_Data.csv')
-Jobs = pd.read_csv('Job_Data.csv')
+Resumes = pd.read_csv(
+    '/home/r00tdada/Mini_Project_Semester_7/Resume_Matcher/Resume_Data.csv')
+Jobs = pd.read_csv(
+    '/home/r00tdada/Mini_Project_Semester_7/Resume_Matcher/Job_Data.csv')
 
 
 ############################### JOB DESCRIPTION CODE ######################################
