@@ -7,8 +7,10 @@
 {% url 'profile' as profile_url %}
 {% url 'register' as register_url %}
 {% url 'login' as login_url %}
+{% url 'company_view' as add_company_view_url %}
+
 {% url 'add_resume' as add_resume_url %}
-<!-- {% url 'company_view' as add_company_view_url % } -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,8 +73,6 @@
             height: 100%;
         }
 
-        http: //localhost:8501/
-        }
 
         .centered {
             position: absolute;
@@ -106,9 +106,9 @@
             <a href="{{ add_resume_url }}"
                 class="{% if request.path == add_resume_url %} active {% endif%}">Resume_Screener
             </a>
-            <!-- <a href="{{ add_company_view_url }}"
+            <a href="{{ add_company_view_url }}"
                 class="{% if request.path == add_company_view_url %} active {% endif%}">Company-Views
-            </a> -->
+            </a>
             <!--  -->
             <a style="float:right" href="{{ logout_url }}"
                 class="{% if request.path == logout_url %} active {% endif%}">Logout</a>

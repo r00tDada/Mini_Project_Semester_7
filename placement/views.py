@@ -86,6 +86,10 @@ def add_stats(request):
     return render(request, "placement/add_stats.html")
 
 
+def company_view(request):
+    return render(request, "placement/company_view.html")
+
+
 @login_required
 def show_description(request, company_id):
     # print(company_id)
