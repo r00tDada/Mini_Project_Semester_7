@@ -34,12 +34,18 @@ class ProfileUpdateForm(forms.ModelForm):
     cgpa = forms.CharField(label='CGPA', max_length=20)
     degree = forms.CharField(label='Degree', max_length=20)
     stream = forms.CharField(label='Stream', max_length=20)
+    docfile = forms.FileField(label='resume')
+
     class Meta:
         model = Profile
-        fields = ['first_name','last_name','id_no','phone_no','cgpa','degree','stream','image']
+        fields = ['first_name', 'last_name', 'id_no',
+                  'phone_no', 'cgpa', 'degree', 'stream', 'image', 'docfile']
+
 
 class ProfileViewForm(forms.ModelForm):
-    placed_in = forms.CharField(label='Job Offered In...(you can not change this field)', max_length=20)
+    placed_in = forms.CharField(
+        label='Job Offered In...(you can not change this field)', max_length=20)
+
     class Meta:
         model = Profile
         fields = ['placed_in']

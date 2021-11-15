@@ -27,7 +27,8 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created! You are now able to log in')
+            messages.success(
+                request, f'Your account has been created! You are now able to log in')
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -68,7 +69,8 @@ def delete_user(request, username):
     try:
         u = User.objects.get(id=username)
         u.delete()
-        messages.success(request, f'Your account has been Deleted!!...Create New Account')
+        messages.success(
+            request, f'Your account has been Deleted!!...Create New Account')
     except User.DoesNotExist:
         context['msg'] = 'User does not exist.'
     except Exception as e:
@@ -92,7 +94,8 @@ def validate_login(request):
                 "valid": False,
                 "msg": "This user do not exist. Please register."
             }, status=200)
-          
+
+
 def is_username(s):
     for i in s.lower():
         if i not in 'abcdefghijklmnopqrstuvwxyz1234567890@.-_':
