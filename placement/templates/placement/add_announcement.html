@@ -6,9 +6,9 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
-    <form class="well form-horizontal" action="/add_announcement" method="post">
+    <form class="well form-horizontal" action="{% url 'add_announcement' %}" method="post">
         {% csrf_token %}
-        <fieldset>
+        <!-- <fieldset>
             <div class="form-group">
                 <label class="col-md-4 control-label">Title</label>
                 <div class="col-md-8 inputGroupContainer">
@@ -26,7 +26,8 @@
                     </div>
                 </div>
             </div>
-        </fieldset>
+        </fieldset> -->
+        {{ post }}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

@@ -1,3 +1,4 @@
+from . import posted
 from django.shortcuts import render, redirect
 from .models import company, Post, application
 from django.contrib import messages
@@ -6,6 +7,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.contrib.auth.models import User
 # Create your views here.
+from pytz import timezone
+from datetime import datetime
 
 
 def index(request):
@@ -53,19 +56,24 @@ def add_company(request):
     return render(request, "placement/add_company.html")
 
 
+postss = []
+
+
 def add_announcement(request):
     if request.method == "POST":
-        title = request.POST['title']
-        desc = request.POST['desc']
-        # date_posted = datetime.datetime.now()
-        # author = ......
-        # print(title, desc, timezone.now(), User)
-        print("*********************************************************************")
-        pt = Post(title=title, content=desc,
-                  date_posted=timezone.now())
-        pt.save()
-        print("Post is added")
-    return render(request, "placement/add_announcement.html")
+        form = posted.CreatePost(request.POST)
+        if form.is_valid():
+            # save post to db
+            pt = form.save(commit=False)
+            pt.date_posted = datetime.now(
+                timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+            pt.author = request.user
+            # print(pt.title, pt.content, pt.date_posted, pt.author)
+            postss.append(pt)
+            return render(request, "placement/index.html")
+    else:
+        form = posted.CreatePost()
+        return render(request, "placement/add_announcement.html", {'post': form})
 
 
 def add_stats(request):
@@ -81,7 +89,7 @@ def show_description(request, company_id):
 
 def announcement(request):
     context = {
-        'posts': Post.objects.all()
+        'posts': postss
     }
     return render(request, 'placement/announcement.html', context)
 
