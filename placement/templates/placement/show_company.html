@@ -1,5 +1,5 @@
 {% extends "placement/header.html" %}
-
+{% load bulma_tags %}
 {% block content %}
 <style>
 table {
@@ -20,13 +20,21 @@ tr:nth-child(even) {
 </style>
 
 <p>&nbsp;</p>
-<h2>Job Profiles</h2>
+<!-- <h2>Job Profiles</h2> -->
+
+<div style="text-align: center; background-color: #d2d2d2; margin-top: 10px; border-radius: 15px; font-family: 'Open Sans', sans-serif;">
+
+      <span style="font-size: 75px">Job Profiles</span>
+      
+      </div>
 {% if user.is_authenticated %}
-<a href="{% url 'your_app'%}" >Click here to see your applied Applications</a>
+
+
 {% endif %}
-<article class="media content-section">
+<div>
+<article class="media content-section" style="margin-top: 40px">
     <div class="container info-boxes pt100 pb100">
-        <table>
+        <table >
         <tr>
             <th>Company</th>
             <th>Job Profile</th>
@@ -52,6 +60,13 @@ tr:nth-child(even) {
             </tr>
 
     {% endfor %}
+  </table>
     </div>
+   
 </article>
+</div>
+ <button class="button is-light " style=" position: relative; margin-left: 35%;  background-color: rgb(105 105 105);color: #6900FF;"> <a href="{% url 'your_app'%} "  style="color: white">Click here to see your applied Applications</a> </button>
+
+
+
 {% endblock %}

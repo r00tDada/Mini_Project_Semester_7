@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/statistics.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'placement/main.css' %}">
-    <script src="{% static 'js/statistics.js' %}"></script>
+    
     {% if title %}
     <title>Placement - {{ title }}</title>
     {% else %}
@@ -148,6 +148,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="{% static 'js/statistics.js' %}"></script>
+    <script src="{% static 'js/counter.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/Chart.js' %}"></script>
+    <script src="{% static 'js/ChartHorizontal.js' %}"></script>
+    <script src="{% static 'js/tabs.js' %}"></script>
     {% block javascript %}
     {% endblock %}
 </body>

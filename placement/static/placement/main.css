@@ -82,3 +82,29 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.glyphicon {
+  left: 31%
+}
+
+.announce {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.announce-card {
+  /*padding: 2%;*/
+  flex-grow: 1;
+  flex-basis: 16%;
+  width: 30%;
+  background-color: grey;
+  margin: 10px;
+  border-radius: 20px;
+
+  display: flex; /* so child elements can use flexbox stuff too! */
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:wght@300&display=swap');
+
