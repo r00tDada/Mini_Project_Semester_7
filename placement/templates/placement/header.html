@@ -8,6 +8,7 @@
 {% url 'register' as register_url %}
 {% url 'login' as login_url %}
 {% url 'add_resume' as add_resume_url %}
+<!-- {% url 'company_view' as add_company_view_url % } -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +90,7 @@
             <a class="{% if request.path == '/announcement/' %} active {% endif %}"
                 href="/announcement/">Announcements</a>
             <a class="{% if request.path == '/show_company/' %} active {% endif %}" href="/show_company/">Job
-                Profiles</a>http://localhost:8501/
+                Profiles</a>
             {% if user.is_authenticated %}
             <a href="{{ job_offers_url }}" class="{% if request.path == job_offers_url %} active {% endif%}">Job
                 Offers</a>
@@ -105,7 +106,9 @@
             <a href="{{ add_resume_url }}"
                 class="{% if request.path == add_resume_url %} active {% endif%}">Resume_Screener
             </a>
-
+            <!-- <a href="{{ add_company_view_url }}"
+                class="{% if request.path == add_company_view_url %} active {% endif%}">Company-Views
+            </a> -->
             <!--  -->
             <a style="float:right" href="{{ logout_url }}"
                 class="{% if request.path == logout_url %} active {% endif%}">Logout</a>
