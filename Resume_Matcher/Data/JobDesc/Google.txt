@@ -1,0 +1,30 @@
+Minimum qualifications:
+
+Bachelor’s degree or equivalent practical experience.
+2 years of experience with software development in one or more programming languages, or 1 year of experience with an advanced degree.
+2 years of experience with data structures or algorithms.
+Preferred qualifications:
+
+Master's degree or PhD in Computer Science or related technical field.
+Experience developing accessible technologies.
+Experience with software update frameworks and operating systems security.
+Experience in Rust, and in the open source community.
+About the job
+Google's software engineers develop the next-generation technologies that change how billions of users connect, explore, and interact with information and one another. Our products need to handle information at massive scale, and extend well beyond web search. We're looking for engineers who bring fresh ideas from all areas, including information retrieval, distributed computing, large-scale system design, networking and data storage, security, artificial intelligence, natural language processing, UI design and mobile; the list goes on and is growing every day. As a software engineer, you will work on a specific project critical to Google’s needs with opportunities to switch teams and projects as you and our fast-paced business grow and evolve. We need our engineers to be versatile, display leadership qualities and be enthusiastic to take on new problems across the full-stack as we continue to push technology forward.
+
+With your technical expertise you will manage project priorities, deadlines, and deliverables. You will design, develop, test, deploy, maintain, and enhance software solutions.
+
+The Fuchsia Software Delivery team implements one of Fuchsia’s main tenets: simple and secure updatability for all software on the system. We maintain the framework for Fuchsia packages, and build functionality over the air updates for the whole system, as well as updates for single packages. We also maintain a suite of development tooling to enable engineers to quickly update and test their code. In this role, you’ll help advance the software updates, software security, and development workflows.
+
+Google is an engineering company at heart. We hire people with a broad set of technical skills who are ready to take on some of technology's greatest challenges and make an impact on users around the world. At Google, engineers not only revolutionize search, they routinely work on scalability and storage solutions, large-scale applications and entirely new platforms for developers around the world. From Google Ads to Chrome, Android to YouTube, social to local, Google engineers are changing the world one technological achievement after another.
+
+Additional Information
+(Colorado only*) Minimum salary of $132,000 + bonus + equity + benefits.
+*Note: Disclosure as required by sb19-085 (8-5-20) of the minimum salary compensation for this role when being hired into our offices in Colorado.
+
+Responsibilities
+Add features to the Fuchsia Software Delivery codebase to improve security and updatability for our products.
+Collaborate across teams, including Security, Privacy, and Product teams to ship features.
+Write design documents and Requests for Comment (RFCs) to improve the state of the Fuchsia Platform.
+Document and thoroughly test code.
+Review and collaborate on designs and code from your peers.
