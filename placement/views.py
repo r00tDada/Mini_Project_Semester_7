@@ -79,7 +79,7 @@ def add_announcement(request):
 def resume(request):
     os.system("python3 Resume_Matcher/fileReader.py")
     # os.system("streamlit run Resume_Matcher/app.py")
-    return redirect("http://localhost:8501/")
+    return redirect("http://localhost:5000/")
 
 
 def add_stats(request):
