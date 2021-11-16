@@ -1,5 +1,5 @@
 {% extends "placement/header.html" %}
-
+{% load bulma_tags %}
 {% block content %}
 <style>
   table {
@@ -21,8 +21,51 @@
 </style>
 
 <p>&nbsp;</p>
-<h2>Job Profiles</h2>
+<!-- <h2>Job Profiles</h2> -->
+
+<div style="text-align: center; background-color: #d2d2d2; margin-top: 10px; border-radius: 15px; font-family: 'Open Sans', sans-serif;">
+
+      <span style="font-size: 75px">Job Profiles</span>
+      
+      </div>
 {% if user.is_authenticated %}
+<<<<<<< HEAD
+
+
+{% endif %}
+<div>
+<article class="media content-section" style="margin-top: 40px">
+    <div class="container info-boxes pt100 pb100">
+        <table >
+        <tr>
+            <th>Company</th>
+            <th>Job Profile</th>
+            <th>Location</th>
+            <th>Category</th>
+            <th>Application Status</th>
+        </tr>
+    {% for company in companies %}
+            <tr>
+                <th><a href="{% url 'show_description' company.id %}">{{company.company_name}}</a></th>
+                <th>{{company.job_profile}}</th>
+                <th>{{company.company_location}}</th>
+                <th>{{company.company_category}}</th>
+                {% if user.is_authenticated %}
+                  {% if company in applied_applications %}
+                    <th>Already Applied</th>
+                  {% else %}
+                    <th><a href="{% url 'apply_job' company.id %}">Apply</a> / <a href="{% url 'show_description' company.id %}">Details</a></th>
+                  {% endif %}
+                {% else %}
+                  <th><a href="{% url 'apply_job' company.id %}">Apply</a> / <a href="{% url 'show_description' company.id %}">Details</a></th>
+                {% endif %}
+            </tr>
+
+    {% endfor %}
+  </table>
+    </div>
+   
+=======
 <a href="{% url 'your_app'%}">Click here to see your applied Applications</a>
 {% endif %}
 <article class="media content-section">
@@ -56,5 +99,11 @@
 
       {% endfor %}
   </div>
+>>>>>>> main
 </article>
+</div>
+ <button class="button is-light " style=" position: relative; margin-left: 35%;  background-color: rgb(105 105 105);color: #6900FF;"> <a href="{% url 'your_app'%} "  style="color: white">Click here to see your applied Applications</a> </button>
+
+
+
 {% endblock %}

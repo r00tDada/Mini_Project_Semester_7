@@ -84,6 +84,7 @@
 
 .projectFactsWrap .item:nth-child(1){
   background: rgb(16, 31, 46);
+  border-radius: 20px 0px 0px 20px;
 }
 
 .projectFactsWrap .item:nth-child(2){
@@ -96,13 +97,16 @@
 
 .projectFactsWrap .item:nth-child(4){
   background: rgb(23, 44, 66);
+  border-radius: 0px 20px 20px 0px;
 }
 
 .projectFactsWrap .item p.number{
   font-size: 40px;
   padding: 0;
-  margin-top: 10px;
+  margin-top: 60px;
   font-weight: bold;
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
 }
 
 .projectFactsWrap .item p{
@@ -111,6 +115,7 @@
   margin: 0;
   padding: 10px;
   font-family: 'Open Sans';
+  margin-right: 45px;
 }
 
 
@@ -141,6 +146,8 @@
 .number{
   background-color: #061e2b;
 }
+
+
 
 @media (max-width: 900px){
   .projectFactsWrap .item {

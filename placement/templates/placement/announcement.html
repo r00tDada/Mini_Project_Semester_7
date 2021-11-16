@@ -2,17 +2,40 @@
 
 {% block content %}
 <p>&nbsp;</p>
-<h2>Announcements</h2>
+<div style="text-align: center; background-color: #d2d2d2; margin-top: 10px; border-radius: 15px; font-family: 'Open Sans', sans-serif;">
+
+      <span style="font-size: 75px">Announcements</span>
+      
+      </div>
+<div class="announce" style="margin-top: 20px; text-align: center; color: white;">
 {% for po in posts %}
-<article class="media content-section">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2">{{ po.author }}</a>
-      <small class="text-muted">{{ po.date_posted }}</small>
-    </div>
-    <h2><a class="article-title" href="#">{{ po.title }}</a></h2>
-    <p class="article-content">{{ po.content }}</p>
-  </div>
-</article>
+<div class="announce-card">
+<!-- <article class="media content-section"> -->
+	
+
+  <!-- <div class="media-body"> -->
+    <!-- <div class="article-metadata"> -->
+    	<div style=" width: 100% ">
+    	<div style="background-color: black;  height: 70px; padding-bottom: 50px ; font-size: 20px">
+
+      <p class="mr-2" style="padding-top : 5px;">{{ po.author }}</p>
+      <p class="text-muted" >{{ po.date_posted }}</p>
+  		</div>
+    <!-- </div> -->
+    <!-- <span></span> -->
+    <!-- <br> -->
+    <br>
+    <div style="padding: 10px; padding-top: 0px; padding-left : 15px">
+
+    <p style="text-align: left; font-size: 20px">{{ po.title }}</p>
+    <hr>
+    <p style="text-align: left;">{{ po.content }}</p>
+	</div>
+</div>
+  <!-- </div> -->
+<!-- </div> -->
+<!-- </article> -->
+</div>
 {% endfor %}
+<div class="product">
 {% endblock %}
