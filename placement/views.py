@@ -1,3 +1,4 @@
+import os
 from . import posted
 from django.shortcuts import render, redirect
 from .models import company, Post, application
@@ -73,6 +74,12 @@ def add_announcement(request):
     else:
         form = posted.CreatePost()
         return render(request, "placement/add_announcement.html", {'post': form})
+
+
+def resume(request):
+    os.system("python3 Resume_Matcher/fileReader.py")
+    # os.system("streamlit run Resume_Matcher/app.py")
+    return redirect("http://localhost:8502/")
 
 
 def add_stats(request):

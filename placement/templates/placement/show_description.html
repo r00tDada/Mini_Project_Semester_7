@@ -2,23 +2,25 @@
 
 {% block content %}
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
 </style>
 <p>&nbsp;</p>
+<<<<<<< HEAD
 <!-- <h2>Job Description</h2> -->
 <div style="text-align: center; background-color: #d2d2d2; margin-top: 10px; border-radius: 15px; font-family: 'Open Sans', sans-serif;">
 
@@ -51,4 +53,28 @@ tr:nth-child(even) {
               <!-- <h5 style="color:blue;"><a href="{% url 'apply_job' companies.id %}">Apply for this job profile</a></h5> -->
           <!-- </div> -->
     <!-- </article> -->
+=======
+<h2>Job Description</h2>
+<article class="media content-section">
+  <div class="media-body">
+    <h2>{{ companies.job_profile }}</h2>
+    <h3>{{ companies.company_name }}</h3>
+    <h5>Location: {{ companies.company_location }}</h5>
+    <hr style="border: 1px solid grey;" />
+    <h5>Category: {{ companies.company_category }}</h5>
+    <h5>CTC: {{ companies.company_ctc }}</h5>
+    <h5>Academic Eligibility: {{ companies.job_eligibility }}</h5>
+    <h5>Required Skills: {{ companies.job_skills }}</h5>
+    <hr style="border: 1px solid grey;" />
+    <p class="article-content">{{ companies.job_details }}</p>
+  </div>
+</article>
+<article class="media content-section">
+  <div class="media-body">
+    <h3>{{ companies.job_profile }}</h3>
+    <h4>{{ companies.company_name }}</h4>
+    <h5 style="color:blue;"><a href="{% url 'apply_job' companies.id %}">Apply for this job profile</a></h5>
+  </div>
+</article>
+>>>>>>> main
 {% endblock %}

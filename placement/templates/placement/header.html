@@ -7,6 +7,8 @@
 {% url 'profile' as profile_url %}
 {% url 'register' as register_url %}
 {% url 'login' as login_url %}
+{% url 'add_resume' as add_resume_url %}
+<!-- {% url 'company_view' as add_company_view_url % } -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,10 +71,7 @@
             height: 100%;
         }
 
-        .center-fit {
-            max-width: 100%;
-            max-height: 100vh;
-            margin: auto;
+        http: //localhost:8501/
         }
 
         .centered {
@@ -97,14 +96,19 @@
                 Offers</a>
 
             <!-- added -->
-            <a href="{{ add_company_url }}" class="{% if request.path == add_company_url %} active {% endif%}">Add
+            <!-- <a href="{{ add_company_url }}" class="{% if request.path == add_company_url %} active {% endif%}">Add
                 Company</a>
             <a href="{{ add_announcement_url }}"
                 class="{% if request.path == add_announcement_url %} active {% endif%}">Add Post
-            </a>
+            </a> -->
             <a href="{{ add_stats_url }}" class="{% if request.path == add_stats_url %} active {% endif%}">Stats
             </a>
-
+            <a href="{{ add_resume_url }}"
+                class="{% if request.path == add_resume_url %} active {% endif%}">Resume_Screener
+            </a>
+            <!-- <a href="{{ add_company_view_url }}"
+                class="{% if request.path == add_company_view_url %} active {% endif%}">Company-Views
+            </a> -->
             <!--  -->
             <a style="float:right" href="{{ logout_url }}"
                 class="{% if request.path == logout_url %} active {% endif%}">Logout</a>

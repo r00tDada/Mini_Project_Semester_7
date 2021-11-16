@@ -73,7 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'campus.wsgi.application'
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
