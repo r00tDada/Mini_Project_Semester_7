@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/statistics.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'placement/main.css' %}">
-    
+
     {% if title %}
     <title>Placement - {{ title }}</title>
     {% else %}
@@ -95,11 +95,11 @@
                 Offers</a>
 
             <!-- added -->
-            <!-- <a href="{{ add_company_url }}" class="{% if request.path == add_company_url %} active {% endif%}">Add
+            <a href="{{ add_company_url }}" class="{% if request.path == add_company_url %} active {% endif%}">Add
                 Company</a>
             <a href="{{ add_announcement_url }}"
                 class="{% if request.path == add_announcement_url %} active {% endif%}">Add Post
-            </a> -->
+            </a>
             <a href="{{ add_stats_url }}" class="{% if request.path == add_stats_url %} active {% endif%}">Stats
             </a>
             <a href="{{ add_resume_url }}"
