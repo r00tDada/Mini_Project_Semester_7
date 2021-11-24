@@ -1,13 +1,10 @@
 {% load static %}
 {% url 'show_offers' as job_offers_url %}
-{% url 'add_company' as add_company_url %}
-{% url 'add_announcement' as add_announcement_url %}
-{%url 'add_stats' as add_stats_url %}
 {% url 'logout' as logout_url %}
 {% url 'profile' as profile_url %}
 {% url 'register' as register_url %}
 {% url 'login' as login_url %}
-{% url 'company_view' as add_company_view_url %}
+{% url 'pcell_login' as pcell_login_url %}
 
 {% url 'add_resume' as add_resume_url %}
 
@@ -100,14 +97,13 @@
                 Company</a>
             <a href="{{ add_announcement_url }}"
                 class="{% if request.path == add_announcement_url %} active {% endif%}">Add Post
-            </a> -->
+            </a> 
             <a href="{{ add_stats_url }}" class="{% if request.path == add_stats_url %} active {% endif%}">Stats
-            </a>
+            </a>-->
             <a href="{{ add_resume_url }}"
                 class="{% if request.path == add_resume_url %} active {% endif%}">Resume_Screener
             </a>
-            <a href="{{ add_company_view_url }}"
-                class="{% if request.path == add_company_view_url %} active {% endif%}">Company-Views
+            <a class="{% if request.path == '/company_view/' %} active {% endif %}" href="/company_view/">Company-Views
             </a>
             <!--  -->
             <a style="float:right" href="{{ logout_url }}"
@@ -118,9 +114,11 @@
                 class="{% if request.path == '/show_campus/' %} active {% endif%}">Show Campus</a>
             {% else %}
             <a style="float:right" href="{{ register_url }}"
-                class="{% if request.path == register_url %} active {% endif%}">Register</a>
+                class="{% if request.path == register_url %} active {% endif%}">Student Register</a>
             <a style="float:right" href=" {{ login_url }}"
-                class="{% if request.path == login_url %} active {% endif%}">Login</a>
+                class="{% if request.path == login_url %} active {% endif%}">Student Login</a>
+            <a style="float:right" href=" {{ pcell_login_url }}"
+                class="{% if request.path == pcell_login_url %} active {% endif%}">Pcell Login</a>
             <a style="float:right" href="/show_campus/"
                 class="{% if request.path == '/show_campus/' %} active {% endif%}">Show Campus</a>
             {% endif %}

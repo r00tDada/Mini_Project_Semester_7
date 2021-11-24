@@ -1,0 +1,86 @@
+{% extends "pcell/header.html" %}
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <form class="well form-horizontal" action="/pcell_add_company/" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Company Name</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-user"></i></span><input id="company_name" name="company_name"
+                            placeholder="Company Name" class="form-control" required="true" value="" type="text"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Company Location</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-home"></i></span><input id="location" name="location"
+                            placeholder="Company Location" class="form-control" required="true" value="" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">company ctc</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-home"></i></span><input id="ctc" name="ctc"
+                            placeholder="Company CTC" class="form-control" required="true" value="" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Company Category</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-home"></i></span><input id="category" name="category"
+                            placeholder="Company Category" class="form-control" required="true" value="" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Job Profile</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-home"></i></span><input id="profile" name="profile"
+                            placeholder="Job Profile" class="form-control" required="true" value="" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Job Eligibilty</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-home"></i></span><input id="eligibility" name="eligibility"
+                            placeholder="Job Eligibilty" class="form-control" required="true" value="" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Job Skills</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-home"></i></span><input id="skills" name="skills"
+                            placeholder="Skills" class="form-control" required="true" value="" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Job Details</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                class="glyphicon glyphicon-home"></i></span><input id="details" name="details"
+                            placeholder="Job Details" class="form-control" required="true" value="" type="text"></div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

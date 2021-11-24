@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'placement.apps.PlacementConfig',
     'users.apps.UsersConfig',
+    'pcell.apps.PcellConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -102,6 +103,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'chaitaliagrawal5800@gmail.com'
+EMAIL_HOST_PASSWORD = 'ztnrhskabpguevea'
+EMAIL_PORT = 587
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

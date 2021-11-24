@@ -1,0 +1,48 @@
+{% extends "pcell/header.html" %}
+
+{% block content %}
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 2px solid #FFFFFF;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+
+<p>&nbsp;</p>
+<!-- <h2>Job Offers</h2> -->
+<div style="text-align: center; background-color: #d2d2d2; margin-top: 10px; border-radius: 15px; font-family: 'Open Sans', sans-serif;">
+
+      <span style="font-size: 75px">Job Offers</span>
+      
+      </div>
+<article class="media content-section" style="margin-top: 40px">
+  <div class="container info-boxes pt100 pb100">
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Placed In</th>
+      </tr>
+      {% for offer in offers %}
+      <tr>
+        <th>{{offer.first_name}}</th>
+        <th>{{offer.last_name}}</th>
+        <th>{{offer.placed_in}}</th>
+      </tr>
+
+      {% endfor %}
+  </div>
+</article>
+{% endblock %}

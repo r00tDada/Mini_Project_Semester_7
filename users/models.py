@@ -8,8 +8,8 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
+    user_type = models.CharField(default='Student', max_length=20)
     id_no = models.CharField(max_length=20)
-
     phone_no = models.CharField(max_length=20)
     cgpa = models.CharField(max_length=20)
     degree = models.CharField(max_length=20)

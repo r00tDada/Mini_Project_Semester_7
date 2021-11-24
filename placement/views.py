@@ -1,7 +1,8 @@
 import os
 from . import posted
 from django.shortcuts import render, redirect
-from .models import company, Post, application
+from .models import application
+from pcell.models import company, Post
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -36,59 +37,15 @@ def show_company(request):
         'applied_applications': applied_applications,
     })
 
-
-def add_company(request):
-    if request.method == "POST":
-        company_name = request.POST['company_name']
-        company_location = request.POST['location']
-        company_ctc = request.POST['ctc']
-        company_category = request.POST['category']
-        job_profile = request.POST['profile']
-        job_eligibility = request.POST['eligibility']
-        job_skills = request.POST['skills']
-        job_details = request.POST['details']
-        print(company_name, company_location, company_ctc, company_category,
-              job_profile, job_eligibility, job_skills, job_details)
-        adcomp = company(company_name=company_name, company_location=company_location,
-                         company_ctc=company_ctc, company_category=company_category, job_profile=job_profile, job_eligibility=job_eligibility, job_skills=job_skills, job_details=job_details)
-        adcomp.save()
-        print("Company :"+company_name +
-              " has been successfully added to the database")
-    return render(request, "placement/add_company.html")
-
-
-def add_announcement(request):
-    if request.method == "POST":
-        form = posted.CreatePost(request.POST)
-        if form.is_valid():
-            # save post to db
-            pt = form.save(commit=False)
-            pt.date_posted = datetime.now(
-                timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
-            pt.author = request.user
-            # print(pt.title, pt.content, pt.date_posted, pt.author)
-            ptt = Post(title=pt.title, content=pt.content,
-                       date_posted=pt.date_posted, author=pt.author)
-            ptt.save()
-            return render(request, "placement/index.html")
-    else:
-        form = posted.CreatePost()
-        return render(request, "placement/add_announcement.html", {'post': form})
-
-
 def resume(request):
     os.system("python3 Resume_Matcher/fileReader.py")
     # os.system("streamlit run Resume_Matcher/app.py")
     return redirect("http://localhost:8502/")
 
 
-def add_stats(request):
-    return render(request, "placement/add_stats.html")
-
-
 def company_view(request):
+    print("yo")
     return render(request, "placement/company_view.html")
-
 
 @login_required
 def show_description(request, company_id):

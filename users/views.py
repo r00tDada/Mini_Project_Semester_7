@@ -8,7 +8,55 @@ from .models import Profile
 from django.http import JsonResponse
 from django.contrib.auth.password_validation import validate_password
 from django.core import exceptions
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode  
+from django.template.loader import render_to_string  
+from .token import account_activation_token    
+from django.core.mail import EmailMessage  
+from django.contrib.sites.shortcuts import get_current_site 
+from django.utils.encoding import force_bytes, force_text
 
+def student_login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username} in student")
+                return redirect('index')
+            else:
+                messages.error(request, "Invalid username or password")
+        else:
+            messages.error(request, "Invalid username or password")
+    form = AuthenticationForm()
+    return render(request, "users/Student_login.html", {"form": form})
+
+def pcell_login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+            if user is not None and Profile.objects.get(user=user).user_type!='Student':
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username} in pcell")
+                return redirect('pcell_index')
+            else:
+                messages.error(request, "Invalid username or password or not authorized for login")
+        else:
+            messages.error(request, "Invalid username or password")
+    form = AuthenticationForm()
+    return render(request, "users/Pcell_login.html", {"form": form})
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("/")
 
 @login_required
 def show_users(request):
@@ -24,18 +72,54 @@ def show_users(request):
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(
-                request, f'Your account has been created! You are now able to log in')
-            return redirect('login')
+        if form.is_valid() and form.cleaned_data.get('email').endswith('@iiita.ac.in'):
+            if User.objects.filter(email=form.cleaned_data.get('email')).exists():
+                messages.error(request, "Email already exist")
+                return render(request, "users/register.html", {"form": form})
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()  
+            # to get the domain of the current site
+            current_site = get_current_site(request)
+            mail_subject = 'Activation link has been sent to your email id'
+            message = render_to_string('users/acc_active_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                'token':account_activation_token.make_token(user),
+            })
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(
+                mail_subject, message, to=[to_email]
+            )
+            email.send()
+            messages.info(request, "Please confirm your email address to complete the registration")
+            return redirect("/")
+        else:
+            messages.error(request, "Add Organization Email ID")
+            return render(request, "users/register.html", {"form": form})
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
 
+    return render(request, "users/register.html", {"form": form})
 
-@login_required
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        # return redirect('home')
+        messages.info(request, "Thank you for your email confirmation.")
+        return redirect("/")
+    else:
+        messages.info(request, "Activation Link Inactive")
+        return redirect("/")
+
 def profile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -79,7 +163,7 @@ def delete_user(request, username):
     form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-
+"""
 def validate_login(request):
     # request should be ajax and method should be GET.
     if request.is_ajax and request.method == "GET":
@@ -164,3 +248,4 @@ def validate(request, field):
 
         else:
             return JsonResponse({}, status=400)
+"""

@@ -19,18 +19,20 @@ from django.contrib.auth import views as auth_views
 from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^register/', user_views.register, name='register'),
+    path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/', user_views.activate, name='activate'),  
     url(r'^profile/', user_views.profile, name='profile'),
-    url(r'^login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    url(r'^logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    url(r'^login/', user_views.student_login_request, name='login'),
+    url(r'^pcell_login/', user_views.pcell_login_request, name='pcell_login'),
+    url(r'^logout/', user_views.logout_request, name='logout'),
     url(r'^show_offers/', user_views.show_users, name='show_offers'),
     url(r'^delete_user/(?P<username>[\w|\W.-]+)/$', user_views.delete_user, name='delete_user'),
-    url(r'^validateLogin/', user_views.validate_login, name='validate_login'),
-    url(r'^validate/(?P<field>[\w\-]+)/$', user_views.validate, name='validator'),
     url(r'^', include('placement.urls')),
+    url(r'^', include('pcell.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
