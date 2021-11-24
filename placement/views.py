@@ -40,7 +40,7 @@ def show_company(request):
 def resume(request):
     os.system("python3 Resume_Matcher/fileReader.py")
     # os.system("streamlit run Resume_Matcher/app.py")
-    return redirect("http://localhost:8502/")
+    return redirect("http://localhost:5000/")
 
 
 def company_view(request):
