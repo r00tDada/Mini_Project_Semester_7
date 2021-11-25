@@ -22,7 +22,7 @@ def show_campus(request):
 
 
 def show_company(request):
-    all_companies = company.objects.all()
+    all_companies = company.objects.filter(visited_year=datetime.now().year)
     if request.user.is_authenticated:
         try:
             entry = application.objects.get(name=request.user)
@@ -66,7 +66,7 @@ def apply_job(request, company_id):
     current_user = request.user
     print(current_user)
     comp = company.objects.get(pk=company_id)
-
+    print(comp)
     try:
         entry = application.objects.get(name=current_user)
     except ObjectDoesNotExist:
@@ -76,6 +76,7 @@ def apply_job(request, company_id):
         messages.success(request, 'You have ALREADY applied to ' +
                          comp.company_name + ' job profile')
     else:
+        print(entry)
         entry.applied_to.add(comp)
         messages.success(request, 'You have applied to ' +
                          comp.company_name + ' job profile')

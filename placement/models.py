@@ -6,8 +6,7 @@ from pcell.models import company
 # Create your models here.
 
 class application(models.Model):
-    name = models.ForeignKey(
-        User, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     applied_to = models.ManyToManyField(company,  blank=True)
 
     def __str__(self):

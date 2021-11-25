@@ -21,7 +21,7 @@ def pcell_show_campus(request):
     return render(request, "pcell/show_campus.html")
 
 def pcell_show_company(request):
-    all_companies = company.objects.all()
+    all_companies = company.objects.filter(visited_year=datetime.now().year)
     return render(request, "pcell/show_company.html", {'companies': all_companies})
 
 def pcell_add_company(request):
@@ -68,7 +68,6 @@ def pcell_add_stats(request):
     return render(request, "pcell/add_stats.html")
 
 def pcell_company_view(request):
-    print("yoooo")
     return render(request, "pcell/company_view.html")
 
 @login_required
