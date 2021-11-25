@@ -2,6 +2,7 @@ import os
 from . import posted
 from django.shortcuts import render, redirect
 from .models import company, Post
+from users.models import Profile
 from placement.models import application
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -14,8 +15,34 @@ from datetime import datetime
 
 
 def pcell_index(request):
-    return render(request, "pcell/index.html")
+    all_companies = company.objects.filter(visited_year=datetime.now().year)
+    companies_count=0
+    average=0
+    highest=0
+    for comp in all_companies:
+        companies_count+=1
+        # average+=comp.company_ctc
+        #if( comp.company_ctc > highest):
+        #    highest=comp.company_ctc
 
+    average=average/companies_count
+
+    all_users = Profile.objects.all()
+    offer = []
+    placed=0
+    for i in range(len(all_users)):
+        if all_users[i].placed_in != 'NoOffer':
+            placed+=1
+            offer.append(all_users[i])
+
+        
+
+    return render(request, "pcell/index.html", {
+        'companies_visited' : companies_count,
+        'average': average,
+        'highest':highest,
+        'placed':placed
+    })
 
 def pcell_show_campus(request):
     return render(request, "pcell/show_campus.html")

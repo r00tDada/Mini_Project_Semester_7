@@ -8,11 +8,11 @@ import datetime
 class company(models.Model):
     company_name = models.CharField(max_length=100)
     company_location = models.CharField(max_length=100)
-    company_ctc = models.CharField(max_length=100)
+    company_ctc = models.IntegerField()
     company_category = models.CharField(max_length=100)
-    job_profile = models.CharField(max_length=100)
-    job_eligibility = models.CharField(max_length=100)
-    job_skills = models.CharField(max_length=100)
+    job_profile = models.CharField(max_length=1000)
+    job_eligibility = models.CharField(max_length=1000)
+    job_skills = models.CharField(max_length=1000)
     job_details = models.TextField()
     visited_year=models.IntegerField(default=datetime.date.today().year)
 

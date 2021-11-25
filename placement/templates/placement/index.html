@@ -22,30 +22,31 @@
 <div id="projectFacts" class="sectionClass">
     <!-- <div class="fullWidth eight columns"> -->
     <div class="projectFactsWrap ">
-        <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
+        <div class="item wow fadeInUpBig animated animated" data-number="{{companies_visited}}" style="visibility: visible;">
             <i class="glyphicon glyphicon-th-list"></i>
-            <p id="number1" class="number">12</p>
+            <!-- <p id="number1" class="number">{{companies_visited}}</p> -->
+            <p class="number">{{companies_visited}}</p>
             <span></span>
             <p style="font-family: 
                         'Genos', sans-serif; margin-left: 38px">Companies Visited</p>
         </div>
-        <div class="item wow fadeInUpBig animated animated" data-number="55" style="visibility: visible;">
+        <div class="item wow fadeInUpBig animated animated" data-number={{highest}} style="visibility: visible;">
             <i class="glyphicon glyphicon-signal"></i>
-            <p id="number2" class="number">55</p>
+            <p  class="number">{{highest}}</p>
             <span></span>
             <p style="font-family: 
                         'Genos', sans-serif; margin-left: 45px">Highest package</p>
         </div>
-        <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;">
+        <div class="item wow fadeInUpBig animated animated" data-number={{average}} style="visibility: visible;">
             <i class="glyphicon glyphicon-bitcoin"></i>
-            <p id="number3" class="number">359</p>
+            <p  class="number">{{average}}</p>
             <span></span>
             <p style="font-family: 
                         'Genos',sans-serif; margin-left: 45px">Average Package</p>
         </div>
-        <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible;">
+        <div class="item wow fadeInUpBig animated animated" data-number={{placed}} style="visibility: visible;">
             <i class="glyphicon glyphicon-user"></i>
-            <p id="number4" class="number">246</p>
+            <p class="number">{{placed}}</p>
             <span></span>
             <p style="font-family: 
                         'Genos', sans-serif; margin-left: 45px">Students Placed</p>
