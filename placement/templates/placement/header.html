@@ -3,6 +3,7 @@
 {% url 'logout' as logout_url %}
 {% url 'profile' as profile_url %}
 {% url 'register' as register_url %}
+{% url 'pcell_login' as pcell_login_url %}
 {% url 'login' as login_url %}
 {% url 'company_view' as add_company_view_url %}
 {% url 'add_resume' as add_resume_url %}
@@ -97,7 +98,7 @@
             <a href="{{ add_announcement_url }}"
                 class="{% if request.path == add_announcement_url %} active {% endif%}">Add Post
             </a> 
-            <a href="{{ add_stats_url }}" class="{% if request.path == add_stats_url %} active {% endif%}">Stats
+            <a href="{{ stats_url }}" class="{% if request.path == stats_url %} active {% endif%}">Stats
             </a>-->
             <a href="{{ add_resume_url }}"
                 class="{% if request.path == add_resume_url %} active {% endif%}">Resume_Screener

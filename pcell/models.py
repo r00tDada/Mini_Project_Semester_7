@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+import datetime
 
 # Create your models here.
 class company(models.Model):
@@ -13,6 +14,7 @@ class company(models.Model):
     job_eligibility = models.CharField(max_length=100)
     job_skills = models.CharField(max_length=100)
     job_details = models.TextField()
+    visited_year=models.IntegerField(default=datetime.date.today().year)
 
     def __str__(self):
         return self.company_name
