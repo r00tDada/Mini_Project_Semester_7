@@ -4,12 +4,7 @@
 {% url 'profile' as profile_url %}
 {% url 'register' as register_url %}
 {% url 'login' as login_url %}
-<<<<<<< HEAD
-{% url 'pcell_login' as pcell_login_url %}
-
-=======
 {% url 'company_view' as add_company_view_url %}
->>>>>>> 862e717c0eea03cd85fb5037eb7d90763133e48d
 {% url 'add_resume' as add_resume_url %}
 
 <!DOCTYPE html>
@@ -107,12 +102,8 @@
             <a href="{{ add_resume_url }}"
                 class="{% if request.path == add_resume_url %} active {% endif%}">Resume_Screener
             </a>
-<<<<<<< HEAD
-            <a class="{% if request.path == '/company_view/' %} active {% endif %}" href="/company_view/">Company-Views
-=======
             <a href="{{ add_company_view_url }}"
                 class="{% if request.path == add_company_view_url %} active {% endif%}">Past-Recruiter
->>>>>>> 862e717c0eea03cd85fb5037eb7d90763133e48d
             </a>
             <!--  -->
             <a style="float:right" href="{{ logout_url }}"
