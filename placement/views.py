@@ -35,7 +35,7 @@ def index(request):
                 highest=comp.company_ctc
             offer.append(all_users[i])
             
-    return render(request, "pcell/index.html", {
+    return render(request, "placement/index.html", {
         'companies_visited' : companies_count,
         'average': average,
         'highest':highest,

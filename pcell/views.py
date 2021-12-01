@@ -41,30 +41,30 @@ def pcell_index(request):
         'placed':placed
     })
 
-def pcell_add_stats(request):
-    all_users = Profile.objects.all()
-    offer = []
-    IT_placed=0
-    ECE_placed=0
-    DUAL_placed=0
-    placed=0
-    for i in range(len(all_users)):
-        if all_users[i].placed_in != 'NoOffer' :
-            placed+=1
-            offer.append(all_users[i])
-            if all_users[i].stream=='IT':
-                IT_placed+=1
-            if all_users[i].stream=='ECE':
-                ECE_placed+=1
-            if all_users[i].stream=='DUAL':
-                DUAL_placed+=1
+# def pcell_add_stats(request):
+#     all_users = Profile.objects.all()
+#     offer = []
+#     IT_placed=0
+#     ECE_placed=0
+#     DUAL_placed=0
+#     placed=0
+#     for i in range(len(all_users)):
+#         if all_users[i].placed_in != 'NoOffer' :
+#             placed+=1
+#             offer.append(all_users[i])
+#             if all_users[i].stream=='IT':
+#                 IT_placed+=1
+#             if all_users[i].stream=='ECE':
+#                 ECE_placed+=1
+#             if all_users[i].stream=='DUAL':
+#                 DUAL_placed+=1
 
-    return render(request, "pcell/add_stats.html", {
-        'placed':placed,
-        'IT_placed':IT_placed,
-        'ECE_placed':ECE_placed,
-        'DUAL_placed':DUAL_placed
-    })
+#     return render(request, "pcell/add_stats.html", {
+#         'placed':placed,
+#         'IT_placed':IT_placed,
+#         'ECE_placed':ECE_placed,
+#         'DUAL_placed':DUAL_placed
+#     })
 
 
 def pcell_show_campus(request):
