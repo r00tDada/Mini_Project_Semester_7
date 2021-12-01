@@ -85,12 +85,15 @@
     <header class="site-header">
         <div class="topnav">
             <a href="{{ home_url }}" class="{% if request.path == home_url %} active {% endif%}">Home</a>
-            <a class="{% if request.path == '/pcell_announcement/' %} active {% endif %}"
+            <!-- <a class="{% if request.path == '/pcell_announcement/' %} active {% endif %}"
                 href="/pcell_announcement/">Announcements</a>
-            <a href="{{ show_company_url }}" class="{% if request.path == show_company_url %} active {% endif%}">Job Profiles</a>
+            <a href="{{ show_company_url }}" class="{% if request.path == show_company_url %} active {% endif%}">Job Profiles</a> -->
             {% if user.is_authenticated %}
 
             <!-- added -->
+            <a class="{% if request.path == '/pcell_announcement/' %} active {% endif %}"
+                href="/pcell_announcement/">Announcements</a>
+            <a href="{{ show_company_url }}" class="{% if request.path == show_company_url %} active {% endif%}">Job Profiles</a>
              <a href="{{ add_company_url }}" class="{% if request.path == add_company_url %} active {% endif%}">Add
                 Company</a>
             <a href="{{ add_announcement_url }}"
