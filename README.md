@@ -1,5 +1,3 @@
-<p align="center">
+Placement Portal for IIITA
 
-<!-- ![Placement Portal for IIITA] -->
-</p>
 
