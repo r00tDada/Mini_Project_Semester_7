@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.mail import EmailMessage  
+from django.template.loader import render_to_string 
+from django.contrib.sites.shortcuts import get_current_site 
 # Create your views here.
 from pytz import timezone
 from datetime import datetime
@@ -89,6 +92,20 @@ def pcell_add_company(request):
         adcomp = company(company_name=company_name, company_location=company_location,
                          company_ctc=company_ctc, company_category=company_category, job_profile=job_profile, job_eligibility=job_eligibility, job_skills=job_skills, job_details=job_details)
         adcomp.save()
+        current_site = get_current_site(request)
+        mail_subject = 'New Compay Added On Placement Portal'
+        message = render_to_string('pcell/company_email.html', {
+            'domain': current_site.domain,
+            'company_name' : company_name,
+        })
+        to_email = []
+        for user in User.objects.all():
+            to_email.append(user.email)
+        email = EmailMessage(
+            mail_subject, message, to=to_email
+        )
+        email.send()
+        messages.info(request,"Company Added Successfully")
         print("Company :"+company_name +
               " has been successfully added to the database")
         return render(request, "pcell/add_company.html")
@@ -109,7 +126,21 @@ def pcell_add_announcement(request):
             ptt = Post(title=pt.title, content=pt.content,
                        date_posted=pt.date_posted, author=pt.author)
             ptt.save()
-            return render(request, "pcell/index.html")
+            # current_site = get_current_site(request)
+            # mail_subject = 'New Announcement Added On Placement Portal'
+            # message = render_to_string('pcell/announcement_email.html', {
+            #     'domain': current_site.domain,
+            # })
+            # to_email = []
+            # for user in User.objects.all():
+            #     to_email.append(user.email)
+            # email = EmailMessage(
+            #     mail_subject, message, to=to_email
+            # )
+            # email.send()
+            messages.info(request,"Post Added Successfully")
+            form = posted.CreatePost()
+            return render(request, "pcell/add_announcement.html", {'post': form})
     else:
         form = posted.CreatePost()
         return render(request, "pcell/add_announcement.html", {'post': form})
