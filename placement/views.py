@@ -45,7 +45,6 @@ def index(request):
 def show_campus(request):
     return render(request, "placement/show_campus.html")
 
-
 def show_company(request):
 
     if request.user.is_authenticated:
@@ -72,6 +71,8 @@ def resume(request):
     # os.system("streamlit run Resume_Matcher/app.py")
     return redirect("http://localhost:5000/")
 
+def add_stats(request):
+    return render(request, "placement/add_stats.html")
 
 def company_view(request):
     print("yo")
