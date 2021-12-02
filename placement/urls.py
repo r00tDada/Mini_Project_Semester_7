@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^index/$', views.index, name='index'),
     url(r'^show_company/$', views.show_company, name='show_company'),
+    url(r'^add_stats/$', views.add_stats, name='add_stats'),
     url(r'^announcement/$', views.announcement, name='announcement'), 
     url(r'add_resume/$', views.resume, name='add_resume'),
     url(r'^your_app/$', views.your_app, name='your_app'),
