@@ -52,7 +52,7 @@ Database = pd.DataFrame(document, columns=[
                         "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
 
 Database.to_csv(
-    user+"/Resume_Matcher/Job_Data.csv", index=False)
+    user+"/Resume_Matcher/Resume_Data.csv", index=False)
 
 # Database.to_json("Resume_Data.json", index=False)
 
