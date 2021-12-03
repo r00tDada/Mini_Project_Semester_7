@@ -130,18 +130,18 @@ def pcell_add_announcement(request):
             ptt = Post(title=pt.title, content=pt.content,
                        date_posted=pt.date_posted, author=pt.author)
             ptt.save()
-            # current_site = get_current_site(request)
-            # mail_subject = 'New Announcement Added On Placement Portal'
-            # message = render_to_string('pcell/announcement_email.html', {
-            #     'domain': current_site.domain,
-            # })
-            # to_email = []
-            # for user in User.objects.all():
-            #     to_email.append(user.email)
-            # email = EmailMessage(
-            #     mail_subject, message, to=to_email
-            # )
-            # email.send()
+            current_site = get_current_site(request)
+            mail_subject = 'New Announcement Added On Placement Portal'
+            message = render_to_string('pcell/announcement_email.html', {
+                'domain': current_site.domain,
+            })
+            to_email = []
+            for user in User.objects.all():
+                to_email.append(user.email)
+            email = EmailMessage(
+                mail_subject, message, to=to_email
+            )
+            email.send()
             messages.info(request, "Post Added Successfully")
             form = posted.CreatePost()
             return render(request, "pcell/add_announcement.html", {'post': form})
