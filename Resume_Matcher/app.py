@@ -107,7 +107,7 @@ fig1 = go.Figure(data=[go.Table(
                fill_color='#d6e0f0',
                align='left'))])
 
-fig1.update_layout(title="Top Ranked Resumes", width=700, height=1100)
+fig1.update_layout(title="Top Ranked Resumes", width=700, height=300)
 st.write(fig1)
 
 st.markdown("---")
