@@ -3,11 +3,16 @@ from pandas._config.config import options
 import Cleaner
 import textract as tx
 import pandas as pd
+import numpy
 import os
 import tf_idf
 
-resume_dir = "/home/r00tdada/Mini_Project_Semester_7/media/Resume/"
-job_desc_dir = "/home/r00tdada/Mini_Project_Semester_7/media/JobDesc/"
+user = os.getcwd()
+print(user)
+
+
+resume_dir = "/home/goyal/Projects/Mini_Project_Semester_7/media/Resume/"
+job_desc_dir = "/home/goyal/Projects/Mini_Project_Semester_7/media/JobDesc/"
 resume_names = os.listdir(resume_dir)
 job_description_names = os.listdir(job_desc_dir)
 print(resume_names)
@@ -47,7 +52,7 @@ Database = pd.DataFrame(document, columns=[
                         "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
 
 Database.to_csv(
-    "/home/r00tdada/Mini_Project_Semester_7/Resume_Matcher/Resume_Data.csv", index=False)
+    "/home/goyal/Projects/Mini_Project_Semester_7/Resume_Matcher/Job_Data.csv", index=False)
 
 # Database.to_json("Resume_Data.json", index=False)
 
@@ -72,4 +77,4 @@ jd_database = pd.DataFrame(Jd, columns=[
                            "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
 
 jd_database.to_csv(
-    "/home/r00tdada/Mini_Project_Semester_7/Resume_Matcher/Job_Data.csv", index=False)
+    "/home/goyal/Projects/Mini_Project_Semester_7/Resume_Matcher/Job_Data.csv", index=False)

@@ -14,44 +14,47 @@ from pytz import timezone
 from datetime import datetime
 
 
-
 def index(request):
     all_companies = company.objects.filter(visited_year=datetime.now().year)
-    companies_count=0
+    companies_count = 0
     for comp in all_companies:
-        companies_count+=1
+        companies_count += 1
 
-    average=0
-    highest=0
+    average = 0
+    highest = 0
     all_users = Profile.objects.all()
     offer = []
-    placed=0
+    placed = 0
     for i in range(len(all_users)):
         if all_users[i].placed_in != 'NoOffer':
-            placed+=1
-            comp=all_companies.get(company_name=all_users[i].placed_in)
-            average+=comp.company_ctc
-            if( comp.company_ctc > highest):
-                highest=comp.company_ctc
+            placed += 1
+            comp = all_companies.get(company_name=all_users[i].placed_in)
+            average += comp.company_ctc
+            average = average//placed
+            if(comp.company_ctc > highest):
+                highest = comp.company_ctc
             offer.append(all_users[i])
-            
+
     return render(request, "placement/index.html", {
-        'companies_visited' : companies_count,
+        'companies_visited': companies_count,
         'average': average,
-        'highest':highest,
-        'placed':placed
+        'highest': highest,
+        'placed': placed
     })
+
 
 def show_campus(request):
     return render(request, "placement/show_campus.html")
 
+
 def show_company(request):
 
     if request.user.is_authenticated:
-        all_companies = company.objects.filter(visited_year=datetime.now().year)
-        companies_count=0
+        all_companies = company.objects.filter(
+            visited_year=datetime.now().year)
+        companies_count = 0
         for comp in all_companies:
-            companies_count+=1
+            companies_count += 1
 
         try:
             entry = application.objects.get(name=request.user)
@@ -66,17 +69,21 @@ def show_company(request):
         'applied_applications': applied_applications
     })
 
+
 def resume(request):
     os.system("python3 Resume_Matcher/fileReader.py")
     # os.system("streamlit run Resume_Matcher/app.py")
-    return redirect("http://localhost:5000/")
+    return redirect("http://localhost:8501/")
+
 
 def add_stats(request):
     return render(request, "placement/add_stats.html")
 
+
 def company_view(request):
     print("yo")
     return render(request, "placement/company_view.html")
+
 
 @login_required
 def show_description(request, company_id):
